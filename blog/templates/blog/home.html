@@ -10,6 +10,31 @@
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
+            <div style="text-align: right;">
+              <div>
+                <p onclick="increaseLikeCount()">
+                  <span style="color: green;"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> </span>
+                  <span id="like_count"> {{post.likes}} </span>
+                </p>
+              </div>
+              <div>
+                <p onclick="increaseDislikeCount()"> 
+                  <span style="color: red;"> <i class="fa fa-thumbs-down" aria-hidden="true"></i> </span>
+                  <span id="dislike_count"> {{post.dislikes}} </span> 
+                </p>
+              </div>
+              <div>
+                {% if post.resolved %}
+                <div class="card text-white bg-success mb-3 rounded text-center">
+                  <b>Resolved</b> 
+                </div>
+                {% else %}
+                <div class="card text-white bg-warning rounded text-center">
+                  <b>Not yet resolved</b> 
+                </div>
+                {% endif %}
+              </div>
+            </div>
           </div>
         </article>
     {% endfor %}
