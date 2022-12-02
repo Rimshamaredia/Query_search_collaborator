@@ -10,8 +10,11 @@ from django.views.generic import (
 )
 from .models import Post
 
+import random
+
 
 def home(request):
+    posts = Post.objects.all()
     context = {
         'posts': Post.objects.all()
     }
