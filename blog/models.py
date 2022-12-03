@@ -12,6 +12,7 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
     resolved = models.BooleanField(default=False)
+    tags = models.CharField(max_length=1000, default='Untagged')
 
     def __str__(self):
         return self.title
