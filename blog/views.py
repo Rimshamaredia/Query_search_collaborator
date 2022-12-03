@@ -15,14 +15,29 @@ import random
 
 def home(request):
     posts = Post.objects.all()
+    post_tags = list()
+    for post in posts:
+        post['tags'] = post['tags'].split(',')
+        post_tags.append(post)
+
     context = {
-        'posts': Post.objects.all()
+        'posts': post_tags
     }
+    context = dict()
     return render(request, 'blog/home.html', context)
 
 
 class PostListView(ListView):
     model = Post
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super(PostListView, self).get_queryset(*args, **kwargs)
+        post_tags = list()
+        print(type(qs))
+        for post in qs:
+            # print(post.tags)
+            post.tags = post.tags.split(',')
+        return qs
     template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
     ordering = ['-date_posted']
