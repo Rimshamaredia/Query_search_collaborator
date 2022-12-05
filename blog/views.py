@@ -8,7 +8,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Post
+from .models import Post, Tag
 
 import random
 
@@ -24,7 +24,7 @@ def home(request):
         'posts': post_tags
     }
     context = dict()
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/base.html', {"context": context})
 
 
 class PostListView(ListView):
@@ -96,3 +96,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
+
+def tag_groups(request):
+    taggroups = Tag.objects.all()
+    return render(request, 'blog/base.html', {"taggroups": taggroups})
+
