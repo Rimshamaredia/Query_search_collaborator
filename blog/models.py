@@ -13,6 +13,7 @@ class Post(models.Model):
     dislikes = models.IntegerField(default=0)
     resolved = models.BooleanField(default=False)
     tags = models.CharField(max_length=1000, default='Untagged')
+    doc_link = models.URLField(max_length = 200)
 
     def __str__(self):
         return self.title
