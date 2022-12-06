@@ -85,6 +85,7 @@
           {% endif %}
           {% block content %}{% endblock %}
         </div>
+        {% if not registration %}
         <div class="col-md-4">
           <div class="content-section">
             <h3>Top Tags</h3>
@@ -137,6 +138,7 @@
             </script>
           </div>
         </div>
+        {% endif %}
       </div>
     </main>
 </body>
