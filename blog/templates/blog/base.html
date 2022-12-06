@@ -38,10 +38,14 @@
       function increaseLikeCount(){
         document.getElementById("like_count").innerHTML = parseInt(document.getElementById("like_count").innerHTML) + 1
       }
+
+      function getProfile(name){
+        document.getElementById("profile").innerHTML = "<p><b>Contact:</b>"+ name +"@tamu.edu <br/> <b>Expertise:</b> C[Expert], C#[Intermediate], SQL[Novice] </p>"
+      } 
     </script>
 
 </head>
-<body>
+<body></body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -95,11 +99,10 @@
           </div>
           <div class="content-section">
             <h3>Online experts</h3>
-            <a class="text-muted">&#128994 Hunter Mccall</a>
-            <a class="text-muted">&#128994 Edith Brennan</a>
-            <a class="text-muted">&#128994 Ajay Dhawan</a>
-
+            <a class="text-muted" onclick="getProfile('hunter')">&#128994 Hunter Mccall</a>
+            <a class="text-muted" onclick="getProfile('edith')">&#128994 Edith Brennan</a>
             <br />
+            <a class="text-muted" onclick="getProfile('ajay')">&#128994 Ajay Dhawan</a>
             <input type="text" placeholder= "Tag groups" id="tags">
             <script>
             $( function() {
@@ -113,6 +116,7 @@
             });
             });
             </script>
+            <div id="profile"></div>
             <button type="button" class="btn btn-secondary" onclick="search()">Search</button>
             <div id="search-div" style="display: none;">
               <a class="text-muted">Andres Matthews</a>
